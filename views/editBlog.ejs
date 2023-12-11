@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/header.ejs") %>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    #main {
+      margin-top: 20px;
+    }
+
+    .container-fluid {
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .btn-primary {
+      background-color: #288bb3;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <main id="main">
+      <div class="container" style="margin-top: 5%">
+        <div class="container-fluid shadow p-4">
+          <% if(typeof results !== 'undefined'){ %> <% results.forEach(res => {
+          %>
+          <form
+            action="/updateBlog"
+            method="POST"
+            onsubmit="handleFormSubmission(event)"
+          >
+            <h1>Edit Blog</h1>
+            <br />
+            <div class="form-group">
+              <input
+                type="hidden"
+                name="id"
+                class="form-control"
+                value="<%= res.id %>"
+              />
+              <br />
+              <input
+                type="text"
+                name="title"
+                class="form-control"
+                placeholder="Title"
+                value="<%= res.title %>"
+                required
+              />
+              <br />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="subtitle"
+                class="form-control"
+                placeholder="Sub title"
+                value="<%= res.subtitle %>"
+                required
+              />
+              <br />
+            </div>
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                name="content"
+                placeholder="Content"
+                id="floatingTextarea2"
+                style="height: 350px"
+                required
+              >
+<%= res.content %></textarea
+              >
+            </div>
+            <br />
+            <button type="submit" name="update" class="btn btn-primary">
+              Update Blog
+            </button>
+          </form>
+          <% }) %> <% } %>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+<script>
+  function handleFormSubmission(event) {
+    event.preventDefault();
+    Swal.fire({
+      title: "Blog Updated!",
+      text: "You've updated the blog!",
+      icon: "success",
+    }).then(() => {
+      event.target.submit();
+    });
+  }
+</script>

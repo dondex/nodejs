@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/header.ejs") %>
+  <style>
+    body {
+      font-family: "YourCustomFont", Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .cool-form {
+      padding: 4%;
+      margin-bottom: 2%;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(190, 173, 173, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .form-floating textarea {
+      resize: none;
+    }
+
+    .btn-cool {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-cool:hover {
+      background-color: #516e8d;
+    }
+  </style>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <main id="main" style="margin-top: 5%">
+      <div class="container">
+        <div class="cool-form shadow p-4">
+          <form
+            action="/addBlog"
+            method="POST"
+            onsubmit="handleFormSubmission(event)"
+          >
+            <h1>Create a Blog</h1>
+            <br />
+            <div class="form-group">
+              <input
+                type="text"
+                name="title"
+                class="form-control"
+                placeholder="Title"
+                required
+              />
+              <br />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="subtitle"
+                class="form-control"
+                placeholder="Sub Title"
+                required
+              />
+              <br />
+            </div>
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                name="content"
+                placeholder="Content"
+                id="floatingTextarea2"
+                style="height: 250px"
+                required
+              ></textarea>
+            </div>
+            <br />
+            <button type="submit" name="add" class="btn btn-primary">
+              Add Blog
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+<script>
+  function handleFormSubmission(event) {
+    event.preventDefault();
+    Swal.fire({
+      title: "Blog Added!",
+      text: "You've added a new blog!",
+      icon: "success",
+    }).then(() => {
+      event.target.submit();
+    });
+  }
+</script>
