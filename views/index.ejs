@@ -8,28 +8,15 @@
     font-family: "Gabarito", sans-serif;
     margin: 0;
     padding: 0;
+    
   }
 
-  #main {
-    position: relative;
-    overflow: hidden;
-  }
-
-  #video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
 
   .container-fluid {
     padding: 20px;
     margin-top: 20px;
     border-radius: 6px;
-    background-color: rgba(221, 222, 223, 0.8); /* Add transparency to the background color */
+    background-color: rgba(221, 222, 223, 0.8);
   }
 
   .title {
@@ -73,7 +60,6 @@
   <%- include("./partials/nav.ejs") %>
 
   <main id="main">
-    
 
     <section class="section bg-white p-5">
       <div class="container ">
@@ -84,11 +70,20 @@
         </div>
 
         <div class="row">
+          <div class="col-md-12">
+            <img class="img-fluid" style="width: 100%; height: 450px; object-fit: cover; object-position: center;" src="/1.jpg.webp" alt="">
+          </div>
+        </div>
+  
+
+        <div class="row">
           <% results.forEach(res => { %>
           <div class="col-lg-4 mb-4">
             <div class="container-fluid ">
               <div class="row">
                 <div class="col-12">
+                 
+
                   <h2>
                     <a href="/viewBlog/<%= res.id %>" class="title" name="<%= res.id %>" value="<%= res.id %>"><%= res.title %></a>
                   </h2>
@@ -102,9 +97,14 @@
           </div>
           <% }) %>
         </div>
+
+
       </div>
     </section>
   </main>
+
+
+  
 </body>
 
 </html>
