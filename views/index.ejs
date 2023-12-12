@@ -10,6 +10,10 @@
     padding: 0;
     
   }
+  .section-blog{
+    background-image: url('/1.jpg.webp');
+    height: 95vh;
+  }
 
 
   .container-fluid {
@@ -61,7 +65,7 @@
 
   <main id="main">
 
-    <section class="section bg-white p-5">
+    <section class="section section-blog p-5">
       <div class="container ">
         <div class="row my-4">
           <div class="col-sm-12">
@@ -69,14 +73,10 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-md-12">
-            <img class="img-fluid" style="width: 100%; height: 450px; object-fit: cover; object-position: center;" src="/1.jpg.webp" alt="">
-          </div>
-        </div>
+        
   
 
-        <div class="row">
+        <div class="row ">
           <% results.forEach(res => { %>
           <div class="col-lg-4 mb-4">
             <div class="container-fluid ">
